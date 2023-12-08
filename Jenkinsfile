@@ -4,18 +4,18 @@ pipeline{
         jdk 'jdk17'
         terraform 'terraform'
     }
-     environment {
+    environment {
         SCANNER_HOME=tool 'sonar-scanner'
     }
-    stages{
-        stage('clean Workspace'){
+    stages {
+        stage('clean workspace'){
             steps{
                 cleanWs()
             }
         }
-        stage('checkout from Git'){
+        stage('Checkout from Git'){
             steps{
-                  git branch: 'main', url: 'https://github.com/Jadhavprachi/JENKINS_CICD.git'
+                git branch: 'main', url: 'https://github.com/Jadhavprachi/JENKINS_CICD.git'
             }
         }
         stage('Terraform version'){
@@ -23,11 +23,11 @@ pipeline{
                  sh 'terraform --version'
                 }
         }
-      stage("Sonarqube Analysis "){
+        stage("Sonarqube Analysis "){
             steps{
                 withSonarQubeEnv('sonar-server') {
-                    sh ''' $SCANNER_HOME/bin/soanar-scanner -Dsonar.projectName=terraform \
-                    -Dsonar.projectKey=terraform '''
+                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Terraform \
+                    -Dsonar.projectKey=Terraform '''
                 }
             }
         }
@@ -43,10 +43,5 @@ pipeline{
                 sh "trivy fs . > trivyfs.txt"
             }
         }
-       
-       
-        
-        
-       
     }
 }
