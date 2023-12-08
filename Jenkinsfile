@@ -1,7 +1,7 @@
 pipeline{
     agent any
     tools{
-        jdk 'java17'
+        jdk 'jdk17'
         terraform 'terraform'
     }
     stages{
