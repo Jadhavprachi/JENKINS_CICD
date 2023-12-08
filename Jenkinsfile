@@ -1,7 +1,7 @@
 pipeline{
     agent any
     tools{
-        jdk 'jdk17'
+        jdk 'java17'
         terraform 'terraform'
     }
     stages{
@@ -12,7 +12,7 @@ pipeline{
         }
         stage('checkout from Git'){
             steps{
-                git branch: 'main', url: 'https://github.com/Jadhavprachi/JENKINS_CICD.git'
+                  git branch: 'main', url: 'https://github.com/Jadhavprachi/JENKINS_CICD.git'
             }
         }
         stage('Terraform version'){
