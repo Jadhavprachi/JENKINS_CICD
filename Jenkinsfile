@@ -23,7 +23,7 @@ pipeline{
       stage("Sonarqube Analysis "){
             steps{
                 withSonarQubeEnv('sonar-server') {
-                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=terraform \
+                    sh ''' $SCANNER_HOME/bin/soanar-scanner -Dsonar.projectName=terraform \
                     -Dsonar.projectKey=terraform '''
                 }
             }
