@@ -1,10 +1,10 @@
 #create s3 bucket
-resource "aws_s3_bucket" "mybucket" {
+resource "aws_s3_bucket" "myproject-cicd" {
   bucket = var.bucketname
 }
 
 resource "aws_s3_bucket_ownership_controls" "example" {
-  bucket = aws_s3_bucket.mybucket.id
+  bucket = aws_s3_bucket.myproject-cicd.id
 
   rule {
     object_ownership = "BucketOwnerPreferred"
@@ -12,7 +12,7 @@ resource "aws_s3_bucket_ownership_controls" "example" {
 }
 
 resource "aws_s3_bucket_public_access_block" "example" {
-  bucket = aws_s3_bucket.mybucket.id
+  bucket = aws_s3_bucket.myproject-cicd.id
 
   block_public_acls       = false
   block_public_policy     = false
@@ -26,12 +26,12 @@ resource "aws_s3_bucket_acl" "example" {
     aws_s3_bucket_public_access_block.example,
   ]
 
-  bucket = aws_s3_bucket.mybucket.id
+  bucket = aws_s3_bucket.myproject-cicd.id
   acl    = "public-read"
 }
 
 resource "aws_s3_object" "index" {
-  bucket = aws_s3_bucket.mybucket.id
+  bucket = aws_s3_bucket.myproject-cicd.id
   key = "index.html"
   source = "index.html"
   acl = "public-read"
@@ -39,7 +39,7 @@ resource "aws_s3_object" "index" {
 }
 
 resource "aws_s3_object" "error" {
-  bucket = aws_s3_bucket.mybucket.id
+  bucket = aws_s3_bucket.myproject-cicd.id
   key = "error.html"
   source = "error.html"
   acl = "public-read"
@@ -47,7 +47,7 @@ resource "aws_s3_object" "error" {
 }
 
 resource "aws_s3_object" "style" {
-  bucket = aws_s3_bucket.mybucket.id
+  bucket = aws_s3_bucket.myproject-cicd.id
   key = "style.css"
   source = "style.css"
   acl = "public-read"
@@ -55,7 +55,7 @@ resource "aws_s3_object" "style" {
 }
 
 resource "aws_s3_object" "script" {
-  bucket = aws_s3_bucket.mybucket.id
+  bucket = aws_s3_bucket.myproject-cicd.id
   key = "script.js"
   source = "script.js"
   acl = "public-read"
@@ -63,7 +63,7 @@ resource "aws_s3_object" "script" {
 }
 
 resource "aws_s3_bucket_website_configuration" "website" {
-  bucket = aws_s3_bucket.mybucket.id
+  bucket = aws_s3_bucket.myproject-cicd.id
   index_document {
     suffix = "index.html"
   }
