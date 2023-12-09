@@ -5,7 +5,7 @@ resource "aws_instance" "Ajay" {
   vpc_security_group_ids = [aws_security_group.ec2_security_group.id]
   user_data              = base64encode(file("website.sh"))
   tags = {
-    Name = "pj-EC2"
+    Name = "Aj-EC2"
   }
 }
 
@@ -56,6 +56,6 @@ resource "aws_security_group" "ec2_security_group" {
   }
 
   tags = {
-    Name = "pj_sg"
+    Name = "Aj_sg"
   }
 }
