@@ -1,6 +1,6 @@
 #create s3 bucket
 resource "aws_s3_bucket" "myproject-cicd" {
-  bucket = var.bucketname
+  bucket = var.bucket_name
 }
 
 resource "aws_s3_bucket_ownership_controls" "example" {
